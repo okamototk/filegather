@@ -17,8 +17,6 @@ do
     then
       mkdir -p $TARGETDIR
     fi
-    #cp -ar $f $TARGETDIR
-    echo scp -r $USER@$host:$f $TARGETDIR
     scp -r $USER@$host:$f $TARGETDIR
   done
 done
