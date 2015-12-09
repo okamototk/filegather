@@ -18,6 +18,10 @@ do
       mkdir -p $TARGETDIR
     fi
     scp -r $USER@$host:$f $TARGETDIR
+    if [ $? != "0" ]
+    then
+      echo "Fail get: "$f 
+    fi
   done
 done
 
