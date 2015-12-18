@@ -17,7 +17,12 @@ do
     then
       mkdir -p $TARGETDIR
     fi
-    scp -r $USER@$host:$f $TARGETDIR
+    if [ -z "`/usr/bin/printf $f | egrep "^/proc/"`" ];
+    then
+      scp -r $USER@$host:$f $TARGETDIR
+    else 
+      ssh $USER@$host cat $f > $HOSTDIR$f
+    fi 
     if [ $? != "0" ]
     then
       echo "Fail get: "$f 
